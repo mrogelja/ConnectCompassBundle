@@ -1,0 +1,25 @@
+{
+  "name": "mrogelja/connect-compass-bundle",
+  "description": "Connect Compass to your database with Propel",
+  "keywords": ["compass", "sass", "css", "scss", "assets", "orm", "database"],
+  "homepage": "https://github.com/mrogelja/connect-compass-bundle",
+  "type": "symfony-bundle",
+  "license": "GPL3",
+  "authors": [
+    {
+      "name": "Mathieu Rogelja",
+      "email": "mathieu.rogelja@gmail.com"
+    }
+  ],
+  "require": {
+    "php": ">=5.3.0",
+    "propel/propel-bundle": "1.2.*"
+  },
+  "autoload": {
+    "psr-0": {
+      "Mrogelja\\ConnectCompassBundle": ""
+    }
+  },
+  "minimum-stability": "dev",
+  "target-dir": "Mrogelja/ConnectCompassBundle"
+}
