@@ -22,7 +22,14 @@ class MrogeljaConnectCompassExtension extends Extension
         $configuration = new Configuration();
         $config = $this->processConfiguration($configuration, $configs);
 
-        $loader = new Loader\XmlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
+        $container->setParameter('connect_compass_projects', $config['compass_projects']);
+        $container->setParameter('connect_compass_default_settings', $config['settings']);
+
+        $loader = new Loader\XmlFileLoader($container, new FileLocator(__DIR__ . '/../Resources/config'));
         $loader->load('services.xml');
+
+        if ($config['register_listener']) {
+            $loader->load('listener.xml');
+        }
     }
 }
