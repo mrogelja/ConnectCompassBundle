@@ -10,7 +10,7 @@
 namespace Mrogelja\ConnectCompassBundle\Proxy;
 
 
-use Mrogelja\ConnectCompassBundle\Compass\SassVariable;
+use Mrogelja\ConnectCompassBundle\Model\SassVariable;
 
 /**
  * Abstract class for data proxies
@@ -31,7 +31,7 @@ abstract class Proxy {
      */
     public function addSassVariable($name, $value, $comment)
     {
-        $this->sassVariables[] = new SassVariable($name, $value, $comment);
+        $this->sassVariables[$name] = new SassVariable($name, $value, $comment);
     }
 
     /**
@@ -40,7 +40,33 @@ abstract class Proxy {
      */
     public function getSassVariables()
     {
+        $this->loadSassVariables();
+
         return $this->sassVariables;
+    }
+
+    /**
+     * Get SASS variable by name
+     * @param $name
+     * @return array
+     */
+    public function getSassVariableByName($name)
+    {
+        $this->loadSassVariables();
+
+        if (isset($this->sassVariables[$name])) {
+            return $this->sassVariables[$name];
+        }
+    }
+
+    /**
+     * Save SASS variable
+     */
+    public function saveSassVariables()
+    {
+        foreach ($this->getSassVariables() as $sassVariable) {
+            $this->saveSassVariable($sassVariable);
+        }
     }
 
     /**
@@ -51,12 +77,15 @@ abstract class Proxy {
     abstract public function isFresh(\DateTime $date);
 
     /**
-     * Gathers SASS variables from source
+     * Load SASS variables from source
      */
-    abstract public function gatherSassVariables();
+    abstract public function loadSassVariables();
 
     /**
      * Save SASS variables into source
+     *
+     * @param SassVariable $variable
+     * @return mixed
      */
-    abstract public function saveSassVariables();
+    abstract public function saveSassVariable(SassVariable $variable);
 }

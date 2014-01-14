@@ -14,6 +14,8 @@ use Symfony\Component\Filesystem\Filesystem;
 use Symfony\Component\Filesystem\Exception\IOExceptionInterface;
 use Symfony\Component\Finder\Finder;
 
+use Mrogelja\ConnectCompassBundle\Model\SassVariable;
+
 class Project {
     /**
      * @var $path project path
@@ -35,6 +37,32 @@ class Project {
     }
 
     /**
+     * Save SASS variables in database
+     * @param SassVariable $sassVariable
+     */
+    public function saveSassVariable(SassVariable $sassVariable)
+    {
+        $this->proxy->saveSassVariable($sassVariable);
+        $this->dump();
+    }
+
+    /**
+     * Get SASS variable by name
+     */
+    public function getSassVariableByName($sassVariableName)
+    {
+        return $this->proxy->getSassVariableByName($sassVariableName);
+    }
+
+    /**
+     * Get SASS variables from database
+     */
+    public function getSassVariables()
+    {
+        return $this->proxy->getSassVariables();
+    }
+
+    /**
      * Dump SASS variables from database to SASS file
      */
     public function dump()
@@ -52,7 +80,7 @@ class Project {
             }
         }
 
-        $this->proxy->gatherSassVariables();
+        $this->proxy->loadSassVariables();
 
         $date = new \DateTime();
 

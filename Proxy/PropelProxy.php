@@ -2,6 +2,8 @@
 
 namespace Mrogelja\ConnectCompassBundle\Proxy;
 
+use Mrogelja\ConnectCompassBundle\Model\SassVariable;
+
 /**
  * Class PropelProxy
  * @package Mrogelja\ConnectCompassBundle\Proxy
@@ -49,7 +51,7 @@ class PropelProxy extends Proxy{
     /**
      * {@inheritdoc}
      */
-    public function gatherSassVariables()
+    public function loadSassVariables()
     {
         $query = $this->getModelQuery();
         $peer  = $this->getModelPeer();
@@ -64,24 +66,22 @@ class PropelProxy extends Proxy{
     }
 
     /**
-     * {@inheritdoc
+     * {@inheritdoc}
      */
-    public function saveSassVariables()
+    public function saveSassVariable(SassVariable $sassVariable)
     {
         $peer  = $this->getModelPeer();
         $query = $this->getModelQuery();
 
-        foreach ($this->getSassVariables() as $sassVariable) {
-            $sassVariableModel = $query::create()
-                ->filterBy($peer::translateFieldName($this->variableNameProperty, \BasePeer::TYPE_FIELDNAME, \BasePeer::TYPE_PHPNAME ), $sassVariable->getName())
-                ->findOneOrCreate();
+        $sassVariableModel = $query::create()
+            ->filterBy($peer::translateFieldName($this->variableNameProperty, \BasePeer::TYPE_FIELDNAME, \BasePeer::TYPE_PHPNAME ), $sassVariable->getName())
+            ->findOneOrCreate();
 
-            $sassVariableModel->{'set' . $peer::translateFieldName($this->variableNameProperty, \BasePeer::TYPE_FIELDNAME, \BasePeer::TYPE_PHPNAME )}($sassVariable->getName());
-            $sassVariableModel->{'set' . $peer::translateFieldName($this->variableValueProperty, \BasePeer::TYPE_FIELDNAME, \BasePeer::TYPE_PHPNAME )}($sassVariable->getValue());
-            $sassVariableModel->{'set' . $peer::translateFieldName($this->variableCommentProperty, \BasePeer::TYPE_FIELDNAME, \BasePeer::TYPE_PHPNAME )}($sassVariable->getComment());
+        $sassVariableModel->{'set' . $peer::translateFieldName($this->variableNameProperty, \BasePeer::TYPE_FIELDNAME, \BasePeer::TYPE_PHPNAME )}($sassVariable->getName());
+        $sassVariableModel->{'set' . $peer::translateFieldName($this->variableValueProperty, \BasePeer::TYPE_FIELDNAME, \BasePeer::TYPE_PHPNAME )}($sassVariable->getValue());
+        $sassVariableModel->{'set' . $peer::translateFieldName($this->variableCommentProperty, \BasePeer::TYPE_FIELDNAME, \BasePeer::TYPE_PHPNAME )}($sassVariable->getComment());
 
-            $sassVariableModel->save();
-        }
+        $sassVariableModel->save();
     }
 
     /**

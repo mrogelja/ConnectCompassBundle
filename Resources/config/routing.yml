@@ -1,0 +1,8 @@
+connect_compass_sass_variables_list:
+    path: /sass-variables/{project}
+    defaults: {_controller: MrogeljaConnectCompassBundle:SassVariable:list}
+
+
+connect_compass_sass_variable_update:
+    path: /sass-variables/{project}/update/{sassVariableName}
+    defaults: {_controller: MrogeljaConnectCompassBundle:SassVariable:update, sassVariableName: null}

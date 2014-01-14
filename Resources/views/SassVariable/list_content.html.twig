@@ -1,0 +1,28 @@
+{% trans_default_domain 'MrogeljaConnectCompassBundle' %}
+
+<table>
+  <thead>
+  <tr>
+    <td>{{ "sass_variable.name"|trans }}</td>
+    <td>{{ "sass_variable.value"|trans }}</td>
+    <td>{{ "sass_variable.comment"|trans }}</td>
+    <td></td>
+  </tr>
+  </thead>
+  <tbody>
+  {% for sass_variable in sass_variables %}
+    <tr>
+      <td>{{ sass_variable.name }}</td>
+      <td>{{ sass_variable.value }}</td>
+      <td>{{ sass_variable.comment }}</td>
+      <td>
+        {% block connect_compass_sass_variable_update_link %}
+          <a href="{{ path("connect_compass_sass_variable_update", { "project" : project, "sassVariableName" : sass_variable.name}) }}">
+            {{ "list.update_sass_variable"|trans }}
+          </a>
+        {% endblock %}
+      </td>
+    </tr>
+  {% endfor %}
+  </tbody>
+</table>

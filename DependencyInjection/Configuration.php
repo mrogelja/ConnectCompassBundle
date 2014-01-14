@@ -19,9 +19,9 @@ class Configuration implements ConfigurationInterface
     {
         $treeBuilder = new TreeBuilder();
 
-        $seetingNode =  $treeBuilder->root('settings');
+        $settingNode =  $treeBuilder->root('settings');
 
-        $seetingNode->children()
+        $settingNode->children()
             ->scalarNode('proxy_type')
                 ->validate()
                 ->ifNotInArray(array('pdo', 'propel', 'doctrine'))
@@ -51,19 +51,37 @@ class Configuration implements ConfigurationInterface
             ->end()
         ->end();
 
+        $templatingNode =  $treeBuilder->root('templating');
+
+        $templatingNode->children()
+            ->scalarNode('engine')
+                ->defaultValue('twig')
+            ->end()
+            ->arrayNode('views')
+                ->children()
+                    ->arrayNode('sass_variable')
+                        ->children()
+                            ->scalarNode('list')->end()
+                            ->scalarNode('update')->end()
+                            ->scalarNode('delete')->end()
+                        ->end()
+                    ->end()
+                ->end()
+            ->end()
+        ->end();
+
         $rootNode = $treeBuilder->root('mrogelja_connect_compass');
 
-        // Here you should define the parameters that are allowed to
-        // configure your bundle. See the documentation linked above for
-        // more information on that topic.
         $rootNode->children()
             ->scalarNode('register_listener')->end()
-            ->append($seetingNode)
+            ->append($settingNode)
+            ->append($templatingNode)
             ->arrayNode('compass_projects')
                 ->prototype('array')
                     ->children()
-                        ->append($seetingNode)
+                        ->append($settingNode)
                         ->scalarNode('path')->end()
+                        ->scalarNode('name')->end()
                     ->end()
                 ->end()
             ->end();

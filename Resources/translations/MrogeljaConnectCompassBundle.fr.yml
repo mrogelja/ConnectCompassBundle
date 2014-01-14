@@ -1,0 +1,16 @@
+form:
+    sass_variable_name: Nom
+    sass_variable_value: Valeur
+    sass_variable_comment: Commentaire
+    change_sass_variable:
+        submit: Modifier
+        back_to_list: Retour à la liste
+        success: Mise à jour de la variable %var% réussie
+list:
+    update_sass_variable: Modifier
+
+
+sass_variable:
+    name: Variable SASS
+    value: Valeur
+    comment: Commentaire

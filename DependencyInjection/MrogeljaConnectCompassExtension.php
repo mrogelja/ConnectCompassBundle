@@ -24,6 +24,7 @@ class MrogeljaConnectCompassExtension extends Extension
 
         $container->setParameter('connect_compass_projects', $config['compass_projects']);
         $container->setParameter('connect_compass_default_settings', $config['settings']);
+        $container->setParameter('connect_compass_templating', $config['templating']);
 
         $loader = new Loader\XmlFileLoader($container, new FileLocator(__DIR__ . '/../Resources/config'));
         $loader->load('services.xml');

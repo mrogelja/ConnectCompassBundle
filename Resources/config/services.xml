@@ -7,6 +7,9 @@
     <parameters>
         <parameter key="connect_compass_proxy_handler.class">Mrogelja\ConnectCompassBundle\Proxy\ProxyHandler</parameter>
         <parameter key="connect_compass_project_collection.class">Mrogelja\ConnectCompassBundle\Compass\ProjectCollection</parameter>
+        <parameter key="connect_compass_sass_variable.class">Mrogelja\ConnectCompassBundle\Model\SassVariable</parameter>
+        <parameter key="connect_compass_sass_variable_type.class">Mrogelja\ConnectCompassBundle\Form\Type\SassVariableType</parameter>
+        <parameter key="connect_compass_templating.class">Mrogelja\ConnectCompassBundle\Templating\TemplateManager</parameter>
     </parameters>
 
     <services>
@@ -16,6 +19,14 @@
             <argument type="service" id="connect_compass_proxy_handler"></argument>
             <argument>%connect_compass_projects%</argument>
             <argument>%connect_compass_default_settings%</argument>
+        </service>
+
+        <service id="connect_compass_sass_variable_type" class="%connect_compass_sass_variable_type.class%">
+            <argument>%connect_compass_sass_variable.class%</argument>
+        </service>
+
+        <service id="connect_compass_templating" class="%connect_compass_templating.class%">
+            <argument>%connect_compass_templating%</argument>
         </service>
     </services>
 </container>

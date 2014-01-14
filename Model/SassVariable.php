@@ -7,7 +7,7 @@
  * To change this template use File | Settings | File Templates.
  */
 
-namespace Mrogelja\ConnectCompassBundle\Compass;
+namespace Mrogelja\ConnectCompassBundle\Model;
 
 
 class SassVariable {
@@ -24,7 +24,7 @@ class SassVariable {
      */
     protected $comment;
 
-    public function __construct($name, $value, $comment)
+    public function __construct($name = NULL, $value = NULL, $comment = NULL)
     {
         $this->name = $name;
         $this->value = $value;
@@ -57,4 +57,33 @@ class SassVariable {
     {
         return $this->comment;
     }
+
+    /**
+     * Set variable comment
+     * @param string $comment
+     */
+    public function setComment($comment)
+    {
+        $this->comment = $comment;
+    }
+
+    /**
+     * Set variable name
+     * @param string $name
+     */
+    public function setName($name)
+    {
+        $this->name = $name;
+    }
+
+    /**
+     * Set variable value
+     * @param string $value
+     */
+    public function setValue($value)
+    {
+        $this->value = $value;
+    }
+
+
 }
