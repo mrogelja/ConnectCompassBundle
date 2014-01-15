@@ -1,5 +1,8 @@
 ConnectCompassBundle
 ======================
 
-This is a bundle that astablish a connection between compass variables and your database.
+This bundle is aimed at managing SASS variable from a data store system.
 
+--------------        ------------------------    dump    ------------------------
+- Data store -  <---> - ConnectCompassBundle - <--------> - SASS variables files -
+--------------        ------------------------    load    ------------------------

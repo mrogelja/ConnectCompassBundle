@@ -1,6 +1,6 @@
 {
   "name": "mrogelja/connect-compass-bundle",
-  "description": "Connect Compass to your database with Propel",
+  "description": "Connect Compass to your database with PDO, Propel, Doctrine...",
   "keywords": ["compass", "sass", "css", "scss", "assets", "orm", "database"],
   "homepage": "https://github.com/mrogelja/connect-compass-bundle",
   "type": "symfony-bundle",
