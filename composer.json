@@ -17,9 +17,9 @@
   },
   "autoload": {
     "psr-0": {
-      "Mrogelja\\ConnectCompassBundle": ""
+      "Mr\\ConnectCompassBundle": ""
     }
   },
   "minimum-stability": "dev",
-  "target-dir": "Mrogelja/ConnectCompassBundle"
+  "target-dir": "Mr/ConnectCompassBundle"
 }

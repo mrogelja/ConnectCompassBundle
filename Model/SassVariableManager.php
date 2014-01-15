@@ -7,7 +7,7 @@
  * To change this template use File | Settings | File Templates.
  */
 
-namespace Mrogelja\ConnectCompassBundle\Model;
+namespace Mr\ConnectCompassBundle\Model;
 
 
 class SassVariableManager {

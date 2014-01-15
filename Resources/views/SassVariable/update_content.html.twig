@@ -1,4 +1,4 @@
-{% trans_default_domain 'MrogeljaConnectCompassBundle' %}
+{% trans_default_domain 'MrConnectCompassBundle' %}
 
 <form action="{{ path("connect_compass_sass_variable_update", { "project" : project}) }}" {{ form_enctype(sass_variable_form) }} method="POST">
   {{ form_widget(sass_variable_form) }}

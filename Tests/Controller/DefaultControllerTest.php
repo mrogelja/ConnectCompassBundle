@@ -1,6 +1,6 @@
 <?php
 
-namespace Mrogelja\ConnectCompassBundle\Tests\Controller;
+namespace Mr\ConnectCompassBundle\Tests\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 

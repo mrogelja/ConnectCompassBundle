@@ -7,15 +7,15 @@
  * To change this template use File | Settings | File Templates.
  */
 
-namespace Mrogelja\ConnectCompassBundle\Proxy;
+namespace Mr\ConnectCompassBundle\Proxy;
 
 
-use Mrogelja\ConnectCompassBundle\Model\SassVariable;
+use Mr\ConnectCompassBundle\Model\SassVariable;
 
 /**
  * Abstract class for data proxies
  * Class Proxy
- * @package Mrogelja\ConnectCompassBundle\Proxy
+ * @package Mr\ConnectCompassBundle\Proxy
  */
 abstract class Proxy {
     /**
@@ -40,14 +40,14 @@ abstract class Proxy {
     /**
      * Save SASS variables into source
      *
-     * @param \Mrogelja\ConnectCompassBundle\Model\SassVariable $sassVariable
+     * @param \Mr\ConnectCompassBundle\Model\SassVariable $sassVariable
      * @return mixed
      */
     abstract public function saveSassVariable(SassVariable $sassVariable);
 
     /**
      * Delete SASS variable
-     * @param \Mrogelja\ConnectCompassBundle\Model\SassVariable $sassVariable
+     * @param \Mr\ConnectCompassBundle\Model\SassVariable $sassVariable
      * @internal param $name
      * @return
      */

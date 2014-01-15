@@ -1,13 +1,13 @@
 <?php
 
 
-namespace Mrogelja\ConnectCompassBundle\Proxy;
+namespace Mr\ConnectCompassBundle\Proxy;
 
 /**
  * This class is aimed at getting the proxy related to project configuration
  *
  * Class ProxyHandler
- * @package Mrogelja\ConnectCompassBundle\Proxy
+ * @package Mr\ConnectCompassBundle\Proxy
  */
 class ProxyHandler {
     public function getProxyForSettings($settings)

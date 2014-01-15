@@ -7,7 +7,7 @@
  * To change this template use File | Settings | File Templates.
  */
 
-namespace Mrogelja\ConnectCompassBundle\Controller;
+namespace Mr\ConnectCompassBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
@@ -27,7 +27,7 @@ class SassVariableController extends Controller{
         $compassProject = $this->get('connect_compass_project_collection')->offsetGet($project);
 
         return $this->container->get('templating')->renderResponse(
-            $this->get('connect_compass_templating')->getTemplate('sass_variable.list', 'MrogeljaConnectCompassBundle:SassVariable:list.html.twig'),
+            $this->get('connect_compass_templating')->getTemplate('sass_variable.list', 'MrConnectCompassBundle:SassVariable:list.html.twig'),
             array(
                 'sass_variables' => $compassProject->getSassVariables(),
                 'project' => $project
@@ -73,7 +73,7 @@ class SassVariableController extends Controller{
             } else {
                 $request->getSession()->getFlashBag()->add('success', $this->get('translator')->trans('form.change_sass_variable.success', array(
                     '%var%' => $sassVariable->getName()
-                ), 'MrogeljaConnectCompassBundle'));
+                ), 'MrConnectCompassBundle'));
             }
 
             if ($request->request->has('redirect_url')) {
@@ -82,7 +82,7 @@ class SassVariableController extends Controller{
         }
 
         return $this->container->get('templating')->renderResponse(
-            $this->get('connect_compass_templating')->getTemplate('sass_variable.update', 'MrogeljaConnectCompassBundle:SassVariable:update.html.twig'),
+            $this->get('connect_compass_templating')->getTemplate('sass_variable.update', 'MrConnectCompassBundle:SassVariable:update.html.twig'),
             array(
                 'sass_variable_form' => $sassVariableForm->createView(),
                 'project' => $project
@@ -128,14 +128,14 @@ class SassVariableController extends Controller{
             } else {
                 $request->getSession()->getFlashBag()->add('success', $this->get('translator')->trans('form.delete_sass_variable.success', array(
                     '%var%' => $sassVariable->getName()
-                ), 'MrogeljaConnectCompassBundle'));
+                ), 'MrConnectCompassBundle'));
             }
 
             return $this->redirect($request->request->get('redirect_url', $this->generateUrl('connect_compass_sass_variables_list', array('project' => $project))));
         }
 
         return $this->container->get('templating')->renderResponse(
-            $this->get('connect_compass_templating')->getTemplate('sass_variable.delete', 'MrogeljaConnectCompassBundle:SassVariable:delete.html.twig'),
+            $this->get('connect_compass_templating')->getTemplate('sass_variable.delete', 'MrConnectCompassBundle:SassVariable:delete.html.twig'),
             array(
                 'sass_variable_form' => $sassVariableForm->createView(),
                 'project' => $project
@@ -174,14 +174,14 @@ class SassVariableController extends Controller{
             } else {
                 $request->getSession()->getFlashBag()->add('success', $this->get('translator')->trans('form.add_sass_variable.success', array(
                     '%var%' => $sassVariable->getName()
-                ), 'MrogeljaConnectCompassBundle'));
+                ), 'MrConnectCompassBundle'));
             }
 
             return $this->redirect($request->request->get('redirect_url', $this->generateUrl('connect_compass_sass_variables_list', array('project' => $project))));
         }
 
         return $this->container->get('templating')->renderResponse(
-            $this->get('connect_compass_templating')->getTemplate('sass_variable.add', 'MrogeljaConnectCompassBundle:SassVariable:add.html.twig'),
+            $this->get('connect_compass_templating')->getTemplate('sass_variable.add', 'MrConnectCompassBundle:SassVariable:add.html.twig'),
             array(
                 'sass_variable_form' => $sassVariableForm->createView(),
                 'project' => $project

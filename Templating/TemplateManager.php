@@ -7,7 +7,7 @@
  * To change this template use File | Settings | File Templates.
  */
 
-namespace Mrogelja\ConnectCompassBundle\Templating;
+namespace Mr\ConnectCompassBundle\Templating;
 
 
 class TemplateManager {

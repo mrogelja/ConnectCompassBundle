@@ -1,7 +1,7 @@
 <?php
 
-namespace Mrogelja\ConnectCompassBundle\Compass;
-use Mrogelja\ConnectCompassBundle\Proxy\ProxyHandler;
+namespace Mr\ConnectCompassBundle\Compass;
+use Mr\ConnectCompassBundle\Proxy\ProxyHandler;
 use Symfony\Component\DependencyInjection\ContainerAware;
 
 class ProjectCollection extends \ArrayObject
@@ -12,7 +12,7 @@ class ProjectCollection extends \ArrayObject
     /**
      * class constructor
      *
-     * @param \Mrogelja\ConnectCompassBundle\Proxy\ProxyHandler $proxyHandler
+     * @param \Mr\ConnectCompassBundle\Proxy\ProxyHandler $proxyHandler
      * @param $projects an array of projects configuration
      * @param $defaultSettings
      */

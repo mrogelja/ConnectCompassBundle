@@ -1,14 +1,14 @@
 <?php
 
-namespace Mrogelja\ConnectCompassBundle\Listener;
+namespace Mr\ConnectCompassBundle\Listener;
 
-use Mrogelja\ConnectCompassBundle\Compass\ProjectCollection;
+use Mr\ConnectCompassBundle\Compass\ProjectCollection;
 use Symfony\Component\HttpKernel\Event\GetResponseEvent;
 use Symfony\Component\HttpKernel\HttpKernelInterface;
 
 /**
  * Class ConnectCompassRequestListener
- * @package Mrogelja\ConnectCompassBundle\Listener
+ * @package Mr\ConnectCompassBundle\Listener
  */
 class ConnectCompassRequestListener {
     /**
@@ -19,7 +19,7 @@ class ConnectCompassRequestListener {
     /**
      * class constructor
      *
-     * @param \Mrogelja\ConnectCompassBundle\Compass\ProjectCollection project collection
+     * @param \Mr\ConnectCompassBundle\Compass\ProjectCollection project collection
      */
     public function __construct(ProjectCollection $projectCollection)
     {

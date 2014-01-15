@@ -1,12 +1,12 @@
 <?php
 
-namespace Mrogelja\ConnectCompassBundle\Proxy;
+namespace Mr\ConnectCompassBundle\Proxy;
 
-use Mrogelja\ConnectCompassBundle\Model\SassVariable;
+use Mr\ConnectCompassBundle\Model\SassVariable;
 
 /**
  * Class PropelProxy
- * @package Mrogelja\ConnectCompassBundle\Proxy
+ * @package Mr\ConnectCompassBundle\Proxy
  */
 class PropelProxy extends Proxy{
     protected $modelClass;

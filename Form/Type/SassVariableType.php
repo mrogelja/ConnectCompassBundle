@@ -1,6 +1,6 @@
 <?php
 
-namespace Mrogelja\ConnectCompassBundle\Form\Type;
+namespace Mr\ConnectCompassBundle\Form\Type;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -23,17 +23,17 @@ class SassVariableType extends AbstractType
         $builder
             ->add('name', null, array(
                 'label' => 'form.sass_variable_name',
-                'translation_domain' => 'MrogeljaConnectCompassBundle',
+                'translation_domain' => 'MrConnectCompassBundle',
                 'label_attr' => array('class' => 'sass_variable_name')
             ))
             ->add('value', null, array(
                 'label' => 'form.sass_variable_value',
-                'translation_domain' => 'MrogeljaConnectCompassBundle',
+                'translation_domain' => 'MrConnectCompassBundle',
                 'label_attr' => array('class' => 'sass_variable_value')
             ))
             ->add('comment', 'textarea', array(
                 'label' => 'form.sass_variable_comment',
-                'translation_domain' => 'MrogeljaConnectCompassBundle',
+                'translation_domain' => 'MrConnectCompassBundle',
                 'label_attr' => array('class' => 'sass_variable_comment')
             ))
         ;

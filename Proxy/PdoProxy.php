@@ -7,7 +7,7 @@
  * To change this template use File | Settings | File Templates.
  */
 
-namespace Mrogelja\ConnectCompassBundle\Proxy;
+namespace Mr\ConnectCompassBundle\Proxy;
 
 
 class PdoProxy extends Proxy{

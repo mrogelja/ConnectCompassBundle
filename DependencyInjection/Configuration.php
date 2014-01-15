@@ -1,6 +1,6 @@
 <?php
 
-namespace Mrogelja\ConnectCompassBundle\DependencyInjection;
+namespace Mr\ConnectCompassBundle\DependencyInjection;
 
 use Symfony\Component\Config\Definition\Builder\TreeBuilder;
 use Symfony\Component\Config\Definition\ConfigurationInterface;
@@ -71,7 +71,7 @@ class Configuration implements ConfigurationInterface
             ->end()
         ->end();
 
-        $rootNode = $treeBuilder->root('mrogelja_connect_compass');
+        $rootNode = $treeBuilder->root('mr_connect_compass');
 
         $rootNode->children()
             ->scalarNode('register_listener')->end()

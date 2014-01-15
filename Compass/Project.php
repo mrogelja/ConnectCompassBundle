@@ -7,14 +7,14 @@
  * To change this template use File | Settings | File Templates.
  */
 
-namespace Mrogelja\ConnectCompassBundle\Compass;
+namespace Mr\ConnectCompassBundle\Compass;
 
-use Mrogelja\ConnectCompassBundle\Proxy\Proxy;
+use Mr\ConnectCompassBundle\Proxy\Proxy;
 use Symfony\Component\Filesystem\Filesystem;
 use Symfony\Component\Filesystem\Exception\IOExceptionInterface;
 use Symfony\Component\Finder\Finder;
 
-use Mrogelja\ConnectCompassBundle\Model\SassVariable;
+use Mr\ConnectCompassBundle\Model\SassVariable;
 
 class Project {
     /**
