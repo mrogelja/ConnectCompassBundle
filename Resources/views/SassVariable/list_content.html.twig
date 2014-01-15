@@ -1,5 +1,8 @@
 {% trans_default_domain 'MrogeljaConnectCompassBundle' %}
 
+{% block connect_compass_sass_variable_list_before %}
+{% endblock %}
+
 <table>
   <thead>
   <tr>
@@ -26,3 +29,7 @@
   {% endfor %}
   </tbody>
 </table>
+
+{% block connect_compass_sass_variable_list_after %}
+  <a href="{{  path("connect_compass_sass_variable_add", { "project" : project}) }}">{{ "list.add_sass_variable"|trans }}</a>
+{% endblock %}

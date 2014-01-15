@@ -51,19 +51,45 @@ class PropelProxy extends Proxy{
     /**
      * {@inheritdoc}
      */
-    public function loadSassVariables()
+    public function getSassVariables()
     {
         $query = $this->getModelQuery();
         $peer  = $this->getModelPeer();
 
+        $variables = array();
+
         foreach($query::create()->find() as $sassVariableModel) {
-            $this->addSassVariable(
+            $variables[] = new SassVariable(
                 $sassVariableModel->{'get' . $peer::translateFieldName($this->variableNameProperty, \BasePeer::TYPE_FIELDNAME, \BasePeer::TYPE_PHPNAME )}(),
                 $sassVariableModel->{'get' . $peer::translateFieldName($this->variableValueProperty, \BasePeer::TYPE_FIELDNAME, \BasePeer::TYPE_PHPNAME )}(),
                 $sassVariableModel->{'get' . $peer::translateFieldName($this->variableCommentProperty, \BasePeer::TYPE_FIELDNAME, \BasePeer::TYPE_PHPNAME )}()
             );
         }
+
+        return $variables;
     }
+
+    /**
+     * Get SASS variable by name
+     * @param $name
+     * @return array
+     */
+    public function getSassVariableByName($name)
+    {
+        $peer  = $this->getModelPeer();
+        $query = $this->getModelQuery();
+
+        $sassVariableModel = $query::create()
+            ->filterBy($peer::translateFieldName($this->variableNameProperty, \BasePeer::TYPE_FIELDNAME, \BasePeer::TYPE_PHPNAME ), $name)
+            ->findOne();
+
+        return  new SassVariable(
+            $sassVariableModel->{'get' . $peer::translateFieldName($this->variableNameProperty, \BasePeer::TYPE_FIELDNAME, \BasePeer::TYPE_PHPNAME )}(),
+            $sassVariableModel->{'get' . $peer::translateFieldName($this->variableValueProperty, \BasePeer::TYPE_FIELDNAME, \BasePeer::TYPE_PHPNAME )}(),
+            $sassVariableModel->{'get' . $peer::translateFieldName($this->variableCommentProperty, \BasePeer::TYPE_FIELDNAME, \BasePeer::TYPE_PHPNAME )}()
+        );
+    }
+
 
     /**
      * {@inheritdoc}
@@ -83,6 +109,20 @@ class PropelProxy extends Proxy{
 
         $sassVariableModel->save();
     }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function deleteSassVariable(SassVariable $sassVariable)
+    {
+        $peer  = $this->getModelPeer();
+        $query = $this->getModelQuery();
+
+        $sassVariableModel = $query::create()
+            ->filterBy($peer::translateFieldName($this->variableNameProperty, \BasePeer::TYPE_FIELDNAME, \BasePeer::TYPE_PHPNAME ), $sassVariable->getName())
+            ->delete();
+    }
+
 
     /**
      * {@inheritdoc}

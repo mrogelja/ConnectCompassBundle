@@ -47,6 +47,16 @@ class Project {
     }
 
     /**
+     * Delete SASS variables from database and
+     * @param SassVariable $sassVariable
+     */
+    public function deleteSassVariable(SassVariable $sassVariable)
+    {
+        $this->proxy->deleteSassVariable($sassVariable);
+        $this->dump();
+    }
+
+    /**
      * Get SASS variable by name
      */
     public function getSassVariableByName($sassVariableName)
@@ -79,8 +89,6 @@ class Project {
                 return;
             }
         }
-
-        $this->proxy->loadSassVariables();
 
         $date = new \DateTime();
 
@@ -138,7 +146,5 @@ SASS;
                 $lastLine = $line;
             }
         }
-
-        $this->proxy->saveSassVariables();
     }
 }

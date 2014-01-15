@@ -6,3 +6,12 @@ connect_compass_sass_variables_list:
 connect_compass_sass_variable_update:
     path: /sass-variables/{project}/update/{sassVariableName}
     defaults: {_controller: MrogeljaConnectCompassBundle:SassVariable:update, sassVariableName: null}
+
+
+connect_compass_sass_variable_delete:
+    path: /sass-variables/{project}/delete/{sassVariableName}
+    defaults: {_controller: MrogeljaConnectCompassBundle:SassVariable:delete, sassVariableName: null}
+
+connect_compass_sass_variable_add:
+    path: /sass-variables/{project}/add
+    defaults: {_controller: MrogeljaConnectCompassBundle:SassVariable:add}

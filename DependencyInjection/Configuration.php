@@ -64,6 +64,7 @@ class Configuration implements ConfigurationInterface
                             ->scalarNode('list')->end()
                             ->scalarNode('update')->end()
                             ->scalarNode('delete')->end()
+                            ->scalarNode('add')->end()
                         ->end()
                     ->end()
                 ->end()

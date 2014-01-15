@@ -5,10 +5,17 @@ form:
     change_sass_variable:
         submit: Change
         back_to_list: Back to list
-        success: Variable %var% updated.
+        success: Variable %var% updated
+    delete_sass_variable:
+        submit: Delete
+        success: Variable %var% deleted
+    add_sass_variable:
+            submit: Add
+            success: Variable %var% added
 
 list:
     update_sass_variable: Update
+    add_sass_variable: Add variable
 
 sass_variable:
     name: SASS variable
