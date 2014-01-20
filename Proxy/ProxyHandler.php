@@ -19,6 +19,7 @@ class ProxyHandler {
                     $propelSettings['model'],
                     $propelSettings['variable_name_property'],
                     $propelSettings['variable_value_property'],
+                    $propelSettings['variable_type_property'],
                     $propelSettings['variable_comment_property'],
                     $propelSettings['variable_updated_at_property']
                 );

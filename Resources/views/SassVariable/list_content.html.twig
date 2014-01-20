@@ -7,6 +7,7 @@
   <thead>
   <tr>
     <td>{{ "sass_variable.name"|trans }}</td>
+    <td>{{ "sass_variable.type"|trans }}</td>
     <td>{{ "sass_variable.value"|trans }}</td>
     <td>{{ "sass_variable.comment"|trans }}</td>
     <td></td>
@@ -16,7 +17,14 @@
   {% for sass_variable in sass_variables %}
     <tr>
       <td>{{ sass_variable.name }}</td>
-      <td>{{ sass_variable.value }}</td>
+      <td>{{ "sass_variable_type.#{sass_variable.type}"|trans }}</td>
+      <td>
+        {% if sass_variable.type == 'color' %}
+          <div style="width: 40px; height: 20px; background-color: {{ sass_variable.value }}; border: #eee 1px solid" ></div>
+        {% else  %}
+          {{ sass_variable.value }}
+        {% endif %}
+      </td>
       <td>{{ sass_variable.comment }}</td>
       <td>
         {% block connect_compass_sass_variable_update_link %}

@@ -6,6 +6,8 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
+use Mr\ConnectCompassBundle\Model\SassVariable;
+
 class SassVariableType extends AbstractType
 {
     private $class;
@@ -20,6 +22,12 @@ class SassVariableType extends AbstractType
 
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
+        $types =  array();
+
+        foreach (SassVariable::$types as $type) {
+            $types[$type] = $type;
+        }
+
         $builder
             ->add('name', null, array(
                 'label' => 'form.sass_variable_name',
@@ -30,6 +38,12 @@ class SassVariableType extends AbstractType
                 'label' => 'form.sass_variable_value',
                 'translation_domain' => 'MrConnectCompassBundle',
                 'label_attr' => array('class' => 'sass_variable_value')
+            ))
+            ->add('type', 'choice', array(
+                'choices' => $types,
+                'label' => 'form.sass_variable_type',
+                'translation_domain' => 'MrConnectCompassBundle',
+                'label_attr' => array('class' => 'sass_variable_type')
             ))
             ->add('comment', 'textarea', array(
                 'label' => 'form.sass_variable_comment',

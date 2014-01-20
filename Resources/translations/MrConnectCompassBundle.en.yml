@@ -1,6 +1,7 @@
 form:
     sass_variable_name: Name
     sass_variable_value: Value
+    sass_variable_type: Type
     sass_variable_comment: Comment
     change_sass_variable:
         submit: Change
@@ -21,3 +22,8 @@ sass_variable:
     name: SASS variable
     value: Value
     comment: Comment
+    type   : Type
+
+sass_variable_type:
+    color: color
+    size:  size

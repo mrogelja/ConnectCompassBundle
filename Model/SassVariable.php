@@ -20,14 +20,30 @@ class SassVariable {
      */
     protected $value;
     /**
+     * @var $type string sass variable type : color | size
+     */
+    protected $type;
+    /**
      * @var $comment string sass variable comment
      */
     protected $comment;
 
-    public function __construct($name = NULL, $value = NULL, $comment = NULL)
+    /**
+     * @var $types array sass variable types
+     */
+    public static $types = array('color', 'size');
+
+    /**
+     * @param null $name
+     * @param null $value
+     * @param null $type
+     * @param null $comment
+     */
+    public function __construct($name = NULL, $value = NULL, $type = NULL, $comment = NULL)
     {
         $this->name = $name;
         $this->value = $value;
+        $this->type = $type;
         $this->comment = $comment;
     }
 
@@ -85,5 +101,19 @@ class SassVariable {
         $this->value = $value;
     }
 
+    /**
+     * @param string $type
+     */
+    public function setType($type)
+    {
+        $this->type = $type;
+    }
 
+    /**
+     * @return string
+     */
+    public function getType()
+    {
+        return $this->type;
+    }
 }

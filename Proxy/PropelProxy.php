@@ -13,6 +13,7 @@ class PropelProxy extends Proxy{
     protected $variableNameProperty;
     protected $variableValueProperty;
     protected $variableCommentProperty;
+    protected $variableTypeProperty;
     protected $variableUpdatedAtProperty;
 
     /**
@@ -20,9 +21,10 @@ class PropelProxy extends Proxy{
      */
     protected $timestampableBehaviorEnabled;
 
-    function __construct($model, $variableNameProperty, $variableValueProperty, $variableCommentProperty, $variableUpdatedAtProperty)
+    function __construct($model, $variableNameProperty, $variableValueProperty, $variableTypeProperty, $variableCommentProperty, $variableUpdatedAtProperty)
     {
         $this->modelClass = $model;
+        $this->variableTypeProperty = $variableTypeProperty;
         $this->variableCommentProperty = $variableCommentProperty;
         $this->variableNameProperty = $variableNameProperty;
         $this->variableUpdatedAtProperty = $variableUpdatedAtProperty;
@@ -62,6 +64,7 @@ class PropelProxy extends Proxy{
             $variables[] = new SassVariable(
                 $sassVariableModel->{'get' . $peer::translateFieldName($this->variableNameProperty, \BasePeer::TYPE_FIELDNAME, \BasePeer::TYPE_PHPNAME )}(),
                 $sassVariableModel->{'get' . $peer::translateFieldName($this->variableValueProperty, \BasePeer::TYPE_FIELDNAME, \BasePeer::TYPE_PHPNAME )}(),
+                $sassVariableModel->{'get' . $peer::translateFieldName($this->variableTypeProperty, \BasePeer::TYPE_FIELDNAME, \BasePeer::TYPE_PHPNAME )}(),
                 $sassVariableModel->{'get' . $peer::translateFieldName($this->variableCommentProperty, \BasePeer::TYPE_FIELDNAME, \BasePeer::TYPE_PHPNAME )}()
             );
         }
@@ -86,6 +89,7 @@ class PropelProxy extends Proxy{
         return  new SassVariable(
             $sassVariableModel->{'get' . $peer::translateFieldName($this->variableNameProperty, \BasePeer::TYPE_FIELDNAME, \BasePeer::TYPE_PHPNAME )}(),
             $sassVariableModel->{'get' . $peer::translateFieldName($this->variableValueProperty, \BasePeer::TYPE_FIELDNAME, \BasePeer::TYPE_PHPNAME )}(),
+            $sassVariableModel->{'get' . $peer::translateFieldName($this->variableTypeProperty, \BasePeer::TYPE_FIELDNAME, \BasePeer::TYPE_PHPNAME )}(),
             $sassVariableModel->{'get' . $peer::translateFieldName($this->variableCommentProperty, \BasePeer::TYPE_FIELDNAME, \BasePeer::TYPE_PHPNAME )}()
         );
     }
@@ -105,6 +109,7 @@ class PropelProxy extends Proxy{
 
         $sassVariableModel->{'set' . $peer::translateFieldName($this->variableNameProperty, \BasePeer::TYPE_FIELDNAME, \BasePeer::TYPE_PHPNAME )}($sassVariable->getName());
         $sassVariableModel->{'set' . $peer::translateFieldName($this->variableValueProperty, \BasePeer::TYPE_FIELDNAME, \BasePeer::TYPE_PHPNAME )}($sassVariable->getValue());
+        $sassVariableModel->{'set' . $peer::translateFieldName($this->variableTypeProperty, \BasePeer::TYPE_FIELDNAME, \BasePeer::TYPE_PHPNAME )}($sassVariable->getType());
         $sassVariableModel->{'set' . $peer::translateFieldName($this->variableCommentProperty, \BasePeer::TYPE_FIELDNAME, \BasePeer::TYPE_PHPNAME )}($sassVariable->getComment());
 
         $sassVariableModel->save();

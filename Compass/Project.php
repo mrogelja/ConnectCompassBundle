@@ -43,7 +43,7 @@ class Project {
     public function saveSassVariable(SassVariable $sassVariable)
     {
         $this->proxy->saveSassVariable($sassVariable);
-        $this->dump();
+        $this->dump(true);
     }
 
     /**
@@ -53,7 +53,7 @@ class Project {
     public function deleteSassVariable(SassVariable $sassVariable)
     {
         $this->proxy->deleteSassVariable($sassVariable);
-        $this->dump();
+        $this->dump(true);
     }
 
     /**
@@ -75,11 +75,11 @@ class Project {
     /**
      * Dump SASS variables from database to SASS file
      */
-    public function dump()
+    public function dump($force = false)
     {
         $fs = new Filesystem();
 
-        if ($fs->exists($this->path)) {
+        if (!$force and $fs->exists($this->path)) {
             $file = new \SplFileInfo($this->path);
             $lastModification = new \DateTime();
             $lastModification->setTimestamp($file->getMTime());
@@ -102,7 +102,7 @@ SASS;
 
         foreach ($this->proxy->getSassVariables() as $sassVariable) {
             $content .= <<<SASS
-/** {$sassVariable->getComment()} */
+/* @{$sassVariable->getType()} {$sassVariable->getComment()} */
 {$sassVariable->getName()} : {$sassVariable->getValue()};
 
 
@@ -132,13 +132,15 @@ SASS;
                 $variableName  = trim($buffer[1]);
                 $variableValue = trim($buffer[2]);
 
-                if (isset($lastLine) and 0 !== preg_match('|/\*(.*)\*/|', $lastLine, $buffer)) {
-                  $variableComment = trim($buffer[1]);
+                if (isset($lastLine) and 0 !== preg_match('|/\* *@([^ ]*) (.*)\*/|', $lastLine, $buffer)) {
+                    $variableType = trim($buffer[1]);
+                    $variableComment = trim($buffer[2]);
                 } else {
-                  $variableComment = '';
+                    $variableComment = '';
+                    $variableType  = '';
                 }
 
-                $this->proxy->addSassVariable($variableName, $variableValue, $variableComment);
+                $this->saveSassVariable(new SassVariable($variableName, $variableValue, $variableType, $variableComment));
 
                 unset($lastLine);
 

@@ -44,6 +44,7 @@ class Configuration implements ConfigurationInterface
                             ->scalarNode('variable_name_property')->end()
                             ->scalarNode('variable_value_property')->end()
                             ->scalarNode('variable_comment_property')->end()
+                            ->scalarNode('variable_type_property')->end()
                             ->scalarNode('variable_updated_at_property')->end()
                         ->end()
                     ->end()
