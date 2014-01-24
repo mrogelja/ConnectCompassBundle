@@ -20,13 +20,13 @@
       <td>{{ "sass_variable_type.#{sass_variable.type}"|trans }}</td>
       <td>
         {% if sass_variable.type == 'color' %}
-          <div style="width: 40px; height: 20px; background-color: {{ sass_variable.value }}; border: #eee 1px solid" ></div>
+          <div style="width: 40px; height: 20px; background-color: {{ sass_variable.value }}; border: #eee 1px solid" title="{{ sass_variable.value }}"></div>
         {% else  %}
           {{ sass_variable.value }}
         {% endif %}
       </td>
       <td>{{ sass_variable.comment }}</td>
-      <td>
+      <td style="width: 150px">
         {% block connect_compass_sass_variable_update_link %}
           <a href="{{ path("connect_compass_sass_variable_update", { "project" : project, "sassVariableName" : sass_variable.name}) }}">
             {{ "list.update_sass_variable"|trans }}
