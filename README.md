@@ -50,9 +50,5 @@ mr_connect_compass:
 Todo List
 =========
 
-- [x] Implement Propel proxy
-- [x] Manage Propel timestampable behavior 
-- [ ] Manage Propel without timestampable behavior 
-- [ ] Implement Doctrine proxy 
-- [ ] Implement Pdo proxy
+See [Pull requests](https://github.com/mrogelja/ConnectCompassBundle/issues/1)
  
