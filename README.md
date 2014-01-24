@@ -14,17 +14,15 @@ This bundle is aimed at managing SASS variable from a data store system.
 Configuration
 =============
 
-Propel
-------
 
 ``` yml
 mr_connect_compass:
     register_listener: true # Is the listener enabled ? Set it to false in Production
 
     settings:
-        proxy_type: propel
+        proxy_type: [ propel | doctrine | pdo ] # Choose one of them
         connection:
-            propel:
+            propel: # If proxy_type : propel
                 variable_name_property: ~ # Default to "name"
                 variable_value_property: ~ # Default to "value"
                 variable_type_property: ~  # Default to "type"
@@ -47,3 +45,14 @@ mr_connect_compass:
             settings: ~  # Same structure than mr_connect_compass.settings, every value is overridable
             
 ```
+
+
+Todo List
+=========
+
+- [x] Implement Propel proxy
+- [x] Manage Propel timestampable behavior 
+- [ ] Manage Propel without timestampable behavior 
+- [ ] Implement Doctrine proxy 
+- [ ] Implement Pdo proxy
+ 
