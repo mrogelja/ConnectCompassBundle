@@ -59,8 +59,11 @@ class PropelProxy extends Proxy{
         $peer  = $this->getModelPeer();
 
         $variables = array();
+        $sassVariableModels =  $query::create()
+            ->orderBy($peer::translateFieldName($this->variableNameProperty, \BasePeer::TYPE_FIELDNAME, \BasePeer::TYPE_PHPNAME ))
+            ->find();
 
-        foreach($query::create()->find() as $sassVariableModel) {
+        foreach( $sassVariableModels as $sassVariableModel) {
             $variables[] = new SassVariable(
                 $sassVariableModel->{'get' . $peer::translateFieldName($this->variableNameProperty, \BasePeer::TYPE_FIELDNAME, \BasePeer::TYPE_PHPNAME )}(),
                 $sassVariableModel->{'get' . $peer::translateFieldName($this->variableValueProperty, \BasePeer::TYPE_FIELDNAME, \BasePeer::TYPE_PHPNAME )}(),
@@ -137,11 +140,17 @@ class PropelProxy extends Proxy{
         $query = $this->getModelQuery();
 
         if ($this->timestampableBehaviorEnabled) {
-            $lastModification = $query::create()
+            $lastModified = $query::create()
                 ->recentlyUpdated()
                 ->lastUpdatedFirst()
-                ->findOne()
-                ->getUpdatedAt();
+                ->findOne();
+
+            if (isset($lastModified)) {
+                $lastModification = $lastModified->getUpdatedAt();
+            } else {
+                return true;
+            }
+
         } else {
             $lastModification = $query::create()
                 ->select($this->variableUpdatedAtProperty)
